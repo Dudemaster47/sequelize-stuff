@@ -24,7 +24,17 @@ app.get('/puppies', async (req, res, next) => {
 // Use these values to create a new Puppy in the database.
 // Respond to the request by sending a success message
 app.post('/puppies', async (req, res, next) => {
-    // Your code here
+    let {name, age_yrs, breed, weight_lbs, microchipped} = req.body;
+
+    const morePuppers = await Puppy.create({
+        name,
+        age_yrs,
+        breed,
+        weight_lbs,
+        microchipped
+    });
+
+    res.json(morePuppers)
 })
 
 
